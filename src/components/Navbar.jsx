@@ -8,8 +8,38 @@ const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
+
+            const sections = [
+                { id: 'home', name: '' },
+                { id: 'about', name: 'About' },
+                { id: 'projects', name: 'Projects' },
+                { id: 'testimonials', name: 'Testimonials' },
+                { id: 'contact', name: 'Contact' }
+            ];
+
+            let currentActive = '';
+
+            // Highlight section when it reaches top 150px of viewport
+            for (const section of sections) {
+                const element = document.getElementById(section.id);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom >= 150) {
+                        currentActive = section.name;
+                    }
+                }
+            }
+
+            // Catch cases where user scrolled to bottom
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+                currentActive = 'Contact';
+            }
+
+            setActive((prev) => (prev !== currentActive ? currentActive : prev));
         };
-        window.addEventListener("scroll", handleScroll);
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll(); // Trigger once on mount
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
