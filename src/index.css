@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-primary: #A855F7;
+  --color-secondary: #DDD6FE;
+  --color-bg-dark: #020010;
+  --color-black-100: #05001A;
+  --color-black-200: #0A012F;
+  --color-black-300: #10024B;
+
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  --animate-spotlight: spotlight 2s ease .75s 1 forwards;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-dark);
+  color: #FFFFFF;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #A855F7 0%, #E9D5FF 50%, #A855F7 100%) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  animation: shine 5s linear infinite !important;
+  display: inline-block;
+  line-height: inherit;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.grid-background {
+  background-size: 80px 80px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+}
+
+.bento-card {
+  background: linear-gradient(90deg, rgba(4, 7, 29, 1) 0%, rgba(12, 14, 35, 1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.bento-card:hover {
+  border-color: rgba(203, 172, 249, 0.3);
+  transform: translateY(-5px);
+}
+
+/* Magic Button Implementation */
+.magic-button {
+  position: relative;
+  display: inline-flex;
+  height: 60px;
+  width: fit-content;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 1px;
+}
+
+.magic-button:focus {
+  outline: none;
+}
+
+.magic-button-bg {
+  position: absolute;
+  inset: -1000%;
+  animation: spin 3s linear infinite;
+  background: conic-gradient(from 90deg at 50% 50%, #A855F7 0%, #E9D5FF 50%, #A855F7 100%);
+}
+
+.magic-button-content {
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background-color: #000319;
+  padding: 0 40px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  backdrop-filter: blur(12px);
+  gap: 14px;
+  z-index: 10;
+}
+
+.animate-spin-slow {
+  animation: spin 60s linear infinite;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 15s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 15s linear infinite;
+}
+
+.section-padding {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
