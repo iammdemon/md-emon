@@ -34,8 +34,8 @@ const TechStackOrbit = ({ title }) => {
 
                 {/* Center Core */}
                 <div className="absolute w-32 h-32 bg-[#A855F7]/20 rounded-full blur-[30px] animate-pulse" />
-                <div className="absolute w-16 h-16 bg-gradient-to-br from-[#A855F7] to-indigo-600 rounded-full flex items-center justify-center z-50 shadow-[0_0_30px_rgba(168,85,247,0.4)] border border-white/20">
-                    <span className="text-white font-bold text-xl drop-shadow-md">ME</span>
+                <div className="absolute w-16 h-16 rounded-full flex items-center justify-center z-50 shadow-[0_0_30px_rgba(168,85,247,0.4)] border border-white/20 overflow-hidden bg-gradient-to-br from-[#A855F7] to-indigo-600">
+                    <img src="/profile.png" alt="ME" className="w-full h-full object-cover" />
                 </div>
 
                 {/* Inner Ring (3 Nodes, 20s) */}

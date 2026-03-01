@@ -4,8 +4,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Projects from '../components/Projects';
 import Testimonials from '../components/Testimonials';
-import Experience from '../components/Experience';
-import Approach from '../components/Approach';
+import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 
 const Portfolio = () => {
@@ -27,8 +26,7 @@ const Portfolio = () => {
                 <About />
                 <Projects />
                 <Testimonials />
-                <Experience />
-                <Approach />
+                <Contact />
                 <Footer />
             </div>
         </main>
