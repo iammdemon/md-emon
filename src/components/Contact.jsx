@@ -49,9 +49,10 @@ const Contact = () => {
 
                     {/* LEFT SIDE: Contact Info List */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        initial={{ opacity: 0, x: -40, filter: "blur(10px)" }}
+                        whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                         className="flex flex-col justify-center"
                     >
                         <div className="flex flex-col gap-[20px]">
@@ -86,9 +87,10 @@ const Contact = () => {
 
                     {/* RIGHT SIDE: Contact Form Card */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        initial={{ opacity: 0, x: 40, filter: "blur(10px)" }}
+                        whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                         className="bento-card p-8 flex flex-col relative"
                         style={{ boxShadow: '0 0 50px -10px rgba(168, 85, 247, 0.15)' }}
                     >

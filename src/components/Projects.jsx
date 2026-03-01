@@ -144,7 +144,11 @@ const Projects = () => {
                 </div>
 
                 {/* Carousel Container */}
-                <div
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                     className="relative w-full h-[500px] sm:h-[550px] md:h-[650px] flex items-center justify-center perspective-1000"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
@@ -152,7 +156,7 @@ const Projects = () => {
                     {projects.map((project, index) => {
                         const styles = getCardStyles(index);
                         return (
-                            <div
+                            <motion.div
                                 key={project.id}
                                 className="absolute w-[90%] sm:w-[450px] md:w-[550px] lg:w-[650px] h-auto max-h-full bg-[#0A0118] border border-white/10 rounded-2xl overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col group cursor-pointer"
                                 style={{
@@ -195,7 +199,7 @@ const Projects = () => {
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         );
                     })}
 
@@ -212,7 +216,7 @@ const Projects = () => {
                     >
                         <ChevronRight className="w-6 h-6" />
                     </button>
-                </div>
+                </motion.div>
 
                 {/* Dots Indicator */}
                 <div className="flex gap-2 z-20">
@@ -229,7 +233,7 @@ const Projects = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 

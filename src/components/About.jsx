@@ -192,8 +192,23 @@ const BentoCard = ({ title, description, id, className, img, spareImg }) => {
         };
     };
 
+    const variants = {
+        hidden: { opacity: 0, y: 50, scale: 0.8, filter: "blur(10px)" },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            transition: {
+                duration: 1.2,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
     return (
-        <div
+        <motion.div
+            variants={variants}
             className={`${className} group`}
             style={getCardStyles()}
         >
@@ -492,7 +507,7 @@ const BentoCard = ({ title, description, id, className, img, spareImg }) => {
                     )}
                 </div>
             </div>
-        </div >
+        </motion.div >
     );
 };
 
@@ -542,9 +557,24 @@ const About = () => {
         },
     ];
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.2
+            }
+        }
+    };
+
     return (
         <section id="about" style={{ padding: '60px 0', width: '100%', position: 'relative', zIndex: 10 }}>
-            <div
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
                 className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 gap-6 lg:gap-8"
                 style={{
                     maxWidth: '1280px',
@@ -558,7 +588,7 @@ const About = () => {
                         {...item}
                     />
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 };

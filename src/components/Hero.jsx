@@ -1,5 +1,6 @@
-import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import Magnetic from './Magnetic';
 
 const Spotlight = ({ className, fill }) => {
     return (
@@ -75,35 +76,103 @@ const Hero = () => {
 
             <div className="flex justify-center relative z-10 w-full px-4">
                 <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[75vw] flex flex-col items-center justify-center text-center">
-                    <p className="uppercase tracking-[0.6em] text-[10px] md:text-sm text-[#DDD6FE] opacity-60 max-w-lg mb-10 font-medium">
-                        Dynamic Web Magic with Next.js
-                    </p>
+                    <div className="overflow-hidden">
+                        <motion.p
+                            initial={{ y: "100%" }}
+                            animate={{ y: 0 }}
+                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                            className="uppercase tracking-[0.6em] text-[10px] md:text-sm text-[#DDD6FE] opacity-60 max-w-lg mb-10 font-medium"
+                        >
+                            Dynamic Web Magic with Next.js
+                        </motion.p>
+                    </div>
 
                     {/**
-           *  Heading
+           *  Heading with Luxury Mask Reveals
            */}
                     <h1
-                        className="text-center text-[38px] md:text-7xl lg:text-8xl font-bold leading-[2.25] tracking-[0.02em] text-white"
-                        style={{ paddingTop: '15px', paddingBottom: '15px', paddingLeft: '0px', paddingRight: '0px' }}
+                        className="text-center text-[38px] md:text-7xl lg:text-8xl font-bold leading-[1.2] md:leading-[1.15] tracking-[0.02em] text-white"
+                        style={{ paddingTop: '15px', paddingBottom: '15px' }}
                     >
-                        Transforming Concepts into <br className="hidden md:block" /> Seamless{" "}
-                        <span className="text-gradient">
-                            User Experiences
-                        </span>
-                    </h1>
-
-                    <p className="text-center tracking-wide md:tracking-widest mb-16 text-sm md:text-lg lg:text-2xl mt-12 text-[#DDD6FE] font-light max-w-[950px] leading-relaxed opacity-90">
-                        Hi! I&apos;m Emon, a Next.js Developer based in Bangladesh.
-                    </p>
-
-                    <a href="#projects" style={{ marginTop: '40px', display: 'block' }}>
-                        <div className="magic-button">
-                            <span className="magic-button-bg" />
-                            <span className="magic-button-content text-lg md:text-xl font-bold uppercase tracking-widest">
-                                See my work <ArrowUpRight size={24} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ml-4" />
+                        <div className="flex flex-wrap justify-center gap-x-3 md:gap-x-5 overflow-hidden">
+                            {"Transforming Concepts into".split(" ").map((word, i) => (
+                                <span key={i} className="inline-block overflow-hidden pb-1">
+                                    <motion.span
+                                        initial={{ y: "100%" }}
+                                        animate={{ y: 0 }}
+                                        transition={{
+                                            duration: 1,
+                                            delay: i * 0.08,
+                                            ease: [0.22, 1, 0.36, 1]
+                                        }}
+                                        className="inline-block"
+                                    >
+                                        {word}
+                                    </motion.span>
+                                </span>
+                            ))}
+                        </div>
+                        <div className="flex flex-wrap justify-center gap-x-3 md:gap-x-5 overflow-hidden">
+                            {["Seamless", ""].map((word, i) => (
+                                <span key={i} className="inline-block overflow-hidden pb-1">
+                                    <motion.span
+                                        initial={{ y: "100%" }}
+                                        animate={{ y: 0 }}
+                                        transition={{
+                                            duration: 1,
+                                            delay: 0.4 + (i * 0.08),
+                                            ease: [0.22, 1, 0.36, 1]
+                                        }}
+                                        className="inline-block"
+                                    >
+                                        {word}
+                                    </motion.span>
+                                </span>
+                            ))}
+                            <span className="inline-block overflow-hidden pb-1">
+                                <motion.span
+                                    initial={{ y: "100%", opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{
+                                        duration: 1.2,
+                                        delay: 0.6,
+                                        ease: [0.22, 1, 0.36, 1]
+                                    }}
+                                    className="text-gradient inline-block"
+                                >
+                                    User Experiences
+                                </motion.span>
                             </span>
                         </div>
-                    </a>
+                    </h1>
+
+                    <div className="overflow-hidden mt-12">
+                        <motion.p
+                            initial={{ y: "100%", opacity: 0 }}
+                            animate={{ y: 0, opacity: 0.9 }}
+                            transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                            className="text-center tracking-wide md:tracking-widest mb-16 text-sm md:text-lg lg:text-2xl text-[#DDD6FE] font-light max-w-[950px] leading-relaxed"
+                        >
+                            Hi! I&apos;m Emon, a Next.js Developer based in Bangladesh.
+                        </motion.p>
+                    </div>
+
+                    <Magnetic strength={0.2}>
+                        <motion.a
+                            href="#projects"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                            style={{ marginTop: '40px', display: 'block' }}
+                        >
+                            <div className="magic-button group">
+                                <span className="magic-button-bg" />
+                                <span className="magic-button-content text-lg md:text-xl font-bold uppercase tracking-widest">
+                                    See my work <ArrowUpRight size={24} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ml-4" />
+                                </span>
+                            </div>
+                        </motion.a>
+                    </Magnetic>
                 </div>
             </div>
         </div>

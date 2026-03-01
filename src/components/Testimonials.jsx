@@ -80,7 +80,11 @@ const Testimonials = () => {
                 </div>
 
                 {/* Testimonial Container */}
-                <div
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                     className="relative w-full max-w-5xl flex items-center justify-center my-8"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
@@ -104,10 +108,14 @@ const Testimonials = () => {
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={currentIndex}
-                                initial={{ opacity: 0, x: 50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -50 }}
-                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                initial={{ opacity: 0, scale: 0.98, x: 20 }}
+                                animate={{ opacity: 1, scale: 1, x: 0 }}
+                                exit={{ opacity: 0, scale: 1.02, x: -20 }}
+                                transition={{
+                                    opacity: { duration: 0.4 },
+                                    scale: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+                                    x: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+                                }}
                                 className="w-full h-full flex flex-col md:flex-row absolute inset-0"
                             >
                                 {/* Left Side: Image */}
@@ -152,9 +160,9 @@ const Testimonials = () => {
                             </motion.div>
                         </AnimatePresence>
                     </div>
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </section >
     );
 };
 
